@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Inventario{% endblock %}
+
+{% block content %}
+<div class="top-bar">
+    <div>
+        <h1>Inventario</h1>
+        <div class="small">Gestión de productos disponibles</div>
+    </div>
+
+    <a class="btn" href="/productos/nuevo">Nuevo producto</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>${{ producto.precio }}</td>
+            <td class="acciones">
+                <a href="/productos/editar/{{ producto.id }}">Editar</a>
+                <a href="/productos/eliminar/{{ producto.id }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
